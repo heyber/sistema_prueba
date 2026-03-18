@@ -1,0 +1,106 @@
+# 🧠 Contexto del Proyecto
+
+Estoy desarrollando una aplicación web usando:
+
+* **Next.js (App Router)**
+* **React**
+* **Tailwind CSS**
+* **Prisma ORM**
+* **PostgreSQL**
+* **Docker + Docker Compose**
+
+---
+
+## ⚙️ Arquitectura actual
+
+El proyecto está dividido en:
+
+* **Frontend (Next.js)**: páginas en `/app`
+* **Backend (API routes)**: rutas en `/app/api`
+* **Base de datos**: PostgreSQL corriendo en Docker
+* **ORM**: Prisma conectado a la DB
+
+---
+
+## 🐳 Docker
+
+Uso `docker-compose` con 2 servicios:
+
+* `app`: corre Next.js
+* `db`: PostgreSQL
+
+La conexión a la base de datos es:
+
+```
+postgresql://postgres:postgres@db:5432/mydb
+```
+
+---
+
+## 🧩 Prisma
+
+* Uso `schema.prisma`
+* Ya tengo configurado el `generator client`
+* Uso `npx prisma generate` y `npx prisma db push`
+* Tengo un modelo básico:
+
+```
+User {
+  id       Int
+  email    String
+  password String
+}
+```
+
+---
+
+## 🔐 Funcionalidad actual
+
+Ya tengo:
+
+* Registro de usuarios (`/api/register`)
+* Login (`/api/login`)
+* Validación contra la base de datos
+* Guardado del usuario en `localStorage`
+* Redirección a `/dashboard` después de login
+
+---
+
+## 🖥️ Frontend
+
+* Landing básico
+* Formulario de login/registro
+* Dashboard simple con header:
+
+  * Nombre del proyecto: **Gserucó**
+  * Mensaje: "Bienvenido, usuario"
+
+---
+
+## 🎯 Objetivo actual
+
+Quiero seguir mejorando:
+
+* Flujo de autenticación
+* UI/UX del dashboard
+* Manejo de sesión (mejor que localStorage)
+* Estructura limpia para usar este proyecto como plantilla
+
+---
+
+## ⚠️ Consideraciones
+
+* Es un proyecto de aprendizaje / base
+* No tiene seguridad avanzada aún (sin JWT, sin hash de contraseñas)
+* Todo corre en entorno local con Docker
+
+---
+
+## ✅ Qué espero de la IA
+
+* Soluciones simples y funcionales
+* Código claro, sin sobreingeniería
+* Explicaciones prácticas (no teóricas)
+* Enfoque en desarrollo real (no académico)
+
+---

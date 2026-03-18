@@ -1,36 +1,175 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Gserucó App
 
-## Getting Started
+Proyecto base para desarrollo de aplicaciones web usando **Next.js + Prisma + PostgreSQL + Docker**.
 
-First, run the development server:
+Este repositorio funciona como **plantilla inicial** para futuros proyectos.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🧱 Stack Tecnológico
+
+* **Next.js (App Router)**
+* **React**
+* **Tailwind CSS**
+* **Prisma ORM**
+* **PostgreSQL**
+* **Docker & Docker Compose**
+
+---
+
+## ⚙️ Arquitectura
+
+El proyecto está dividido en:
+
+* `/app` → Frontend (páginas y UI)
+* `/app/api` → Backend (API routes)
+* `prisma/` → Esquema y configuración de base de datos
+* `docker-compose.yml` → Orquestación de servicios
+
+---
+
+## 🐳 Entorno con Docker
+
+El proyecto corre con 2 servicios:
+
+* `app` → aplicación Next.js
+* `db` → base de datos PostgreSQL
+
+### 🔌 Conexión a la base de datos
+
+```env
+DATABASE_URL="postgresql://postgres:postgres@db:5432/mydb"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Cómo iniciar el proyecto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Construir y levantar contenedores
 
-## Learn More
+```bash
+docker-compose up --build
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Generar cliente Prisma (IMPORTANTE)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+docker exec -it trabajosss-app-1 sh
+npx prisma generate
+npx prisma db push
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. Abrir en el navegador
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+http://localhost:3000
+```
+
+---
+
+## 🔐 Funcionalidades actuales
+
+* ✅ Registro de usuarios
+* ✅ Login con validación en base de datos
+* ✅ Redirección a dashboard
+* ✅ Persistencia básica con localStorage
+* ✅ Dashboard con mensaje de bienvenida
+
+---
+
+## 🖥️ Estructura de rutas
+
+| Ruta            | Descripción         |
+| --------------- | ------------------- |
+| `/`             | Landing page        |
+| `/login`        | Inicio de sesión    |
+| `/register`     | Registro de usuario |
+| `/dashboard`    | Panel principal     |
+| `/api/login`    | API login           |
+| `/api/register` | API registro        |
+
+---
+
+## 🧩 Prisma
+
+Ejemplo de modelo actual:
+
+```prisma
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+}
+```
+
+---
+
+## 🎯 Objetivo del proyecto
+
+Este proyecto sirve como base para:
+
+* Crear aplicaciones rápidamente
+* Probar integraciones con base de datos
+* Implementar autenticación
+* Escalar hacia arquitecturas más completas
+
+---
+
+## ⚠️ Estado actual
+
+* Proyecto en desarrollo
+* Seguridad básica (sin hashing ni JWT aún)
+* Uso enfocado a aprendizaje y prototipos
+
+---
+
+## 🔮 Próximos pasos
+
+* 🔐 Autenticación segura (JWT / cookies)
+* 🔑 Encriptación de contraseñas
+* 🧠 Manejo de sesiones real
+* 🎨 Mejora de UI/UX
+* 🛡️ Protección de rutas
+
+---
+
+## 🧠 Nota para desarrolladores / IA
+
+Este proyecto:
+
+* Corre completamente en Docker
+* Usa Prisma como ORM
+* No utiliza librerías de autenticación externas
+* Prioriza simplicidad sobre complejidad
+
+Se espera:
+
+* Código claro
+* Soluciones prácticas
+* Evitar sobreingeniería
+
+---
+
+## 📦 Deploy
+
+Para producción se recomienda:
+
+* Configurar variables de entorno reales
+* Usar base de datos externa
+* Implementar seguridad adecuada
+
+---
+
+## 🤝 Contribución
+
+Este proyecto está diseñado como plantilla personal, pero puede adaptarse a otros casos de uso fácilmente.
+
+---
+
+## 📌 Autor
+
+Proyecto desarrollado como base reutilizable para futuros desarrollos.
